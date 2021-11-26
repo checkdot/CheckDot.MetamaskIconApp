@@ -1,0 +1,42 @@
+<app-testnet-warning></app-testnet-warning>
+
+<ng-container *ngIf="(connected$ | async) === 'connected'">
+    <div class="loading d-flex justify-content-center align-items-center" [dark]="['bg-body-dark', 'text-body-dark']" [light]="['bg-body-light', 'text-body-light']" appTheme>
+        <div class="text-center mb-5">
+          <img id="loading-app-img" src="{{ ($theme | async) === 'light' ? 'assets/logo-black.svg' : 'assets/logo-white.svg' }}" height="85px">
+          <span class="d-none d-sm-inline" [dark]="['text-dark']" [light]="['text-light']" appTheme>Metamask Icon App</span>
+            <div class="justify-content-center align-items-center my-5">
+                <button (click)="addIcon()" type="button" class="btn block-rounded btn-sm" [dark]="['btn-outline-dark']" [light]="['btn-outline-light']" appTheme>
+                    <span class="d-none d-sm-inline mr-2">Add CDT token on Metamask</span>
+                    <img src="assets/metamask.png" width="18" />
+                </button>
+                <div *ngIf="walletError" class="justify-content-center align-items-center" style="margin-top: 0.5em;color: red;">
+                    {{ walletError }}
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="(connected$ | async) !== 'connected'">
+    <div class="loading d-flex justify-content-center align-items-center" [dark]="['bg-body-dark', 'text-body-dark']" [light]="['bg-body-light', 'text-body-light']" appTheme>
+        <div class="text-center mb-5">
+          <img id="loading-app-img" src="{{ ($theme | async) === 'light' ? 'assets/logo-black.svg' : 'assets/logo-white.svg' }}" height="85px">
+          <span class="d-none d-sm-inline" [dark]="['text-dark']" [light]="['text-light']" appTheme>Metamask Icon App</span>
+            <div class="justify-content-center align-items-center my-5">
+                <button (click)="connect()" type="button" class="btn block-rounded btn-sm" [dark]="['btn-outline-dark']" [light]="['btn-outline-light']" appTheme>
+                    <span class="d-none d-sm-inline mr-2">Connect Wallet</span>
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-circle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-arrow-circle-right fa-w-16 fa-fw">
+                        <path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z" class=""></path>
+                    </svg>
+                </button>
+                <div *ngIf="walletError" class="justify-content-center align-items-center" style="margin-top: 0.5em;color: red;">
+                    {{ walletError }}
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<m-web3-modal title="Select a Wallet" description="Please select a wallet to connect to this dapp:"></m-web3-modal>
+<app-modal open="true"></app-modal>

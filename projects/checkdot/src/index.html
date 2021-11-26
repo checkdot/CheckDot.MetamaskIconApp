@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Checkdot</title>
+  <base href="/">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+  <link href="assets/css/fonts.css" rel="stylesheet">
+  <link href="assets/css/svg.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/snackbar.css" />
+  <script src="assets/js/snackbar.min.js"></script>
+</head>
+<body>
+  <noscript><strong>We're sorry but angular js doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript>
+  <app-root>
+    <div id="loading-app" style="height: 100%;">
+    </div>
+  </app-root>
+  
+  <!-- THEME INITIAL LOAD SCRIPT  -->
+  <script>
+    let loadingApp = document.getElementById("loading-app");
+
+    if (loadingApp && window.localStorage.getItem('theme') == 'light') {
+      loadingApp.innerHTML = `
+      <div class="loading d-flex justify-content-center align-items-center bg-body-light">
+      <div class="text-center mb-5">
+        <img id="loading-app-img" src="assets/logo-black.svg" height="85px">
+        <div class="d-flex justify-content-center align-items-center my-5">
+          <span role="status" class="align-self-center align-middle spinner-border text-primary-light" style="display: block; width: 2rem; height: 2rem;">
+            <span class="sr-only">Loading... </span>
+          </span>
+          <h5 class="m-0 ml-3 text-muted-light">Just a moment...</h5>
+        </div>
+      </div>
+      </div>`;
+    } else if (loadingApp) {
+      loadingApp.innerHTML = `
+      <div class="loading d-flex justify-content-center align-items-center bg-body-dark">
+      <div class="text-center mb-5">
+        <img id="loading-app-img" src="assets/logo-white.svg" height="85px">
+        <div class="d-flex justify-content-center align-items-center my-5">
+          <span role="status" class="align-self-center align-middle spinner-border text-primary-dark" style="display: block; width: 2rem; height: 2rem;">
+            <span class="sr-only">Loading... </span>
+          </span>
+          <h5 class="m-0 ml-3 text-muted-dark">Just a moment...</h5>
+        </div>
+      </div>
+      </div>`;
+    }
+  </script>
+</body>
+</html>
