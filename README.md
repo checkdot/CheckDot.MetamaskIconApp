@@ -1,1 +1,1 @@
-# CheckDot.MetamaspIconApp
+# CheckDot.MetamaskIconApp
